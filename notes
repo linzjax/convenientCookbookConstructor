@@ -1,0 +1,33 @@
+Ok, so what do I even want this thing to do?
+- allow the user to select which dietary restriction they want to adhere to
+- provide a pop up that displays 'avoid' foods.
+- allow the user to compile a list of ingredients to go shopping for.
+- text the user their final list.
+- save lists and recipes for later dates.
+	- including url to original recipe.
+
+
+Ok, so what will I need?
+- a chrome options page so they can adjust which diet.
+- a twilio account that will text the user their ingredients
+- a database to host individual users recipes and links
+
+Alright, now what steps to I need to accomplish?
+- set up individual user accounts
+	+ https://orchestrate.io/blog/2014/06/26/build-user-authentication-with-node-js-express-passport-and-orchestrate/
+- set up database
+- get twilio texting working
+- add additional diets to database
+- see if you can send an ajax request to the database from the popup.
+
+
+Database layout:
+collection: users {
+	user1 : {
+		recipe1 : [ingredients list],
+		recipe2 : [ingredients list]
+	}
+	user2 : {
+		recipe1: [ingredients list]
+	}
+}
