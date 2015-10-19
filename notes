@@ -31,3 +31,13 @@ collection: users {
 		recipe1: [ingredients list]
 	}
 }
+
+
+
+
+2015-09-30:
+- be able to click a recipe and have the ingredients appear in the textarea
+- keep track of the number of clicks on a specific recipe and arrange on the page in order of most frequently used to least.
+
+2015-10-01:
+- how to add a layover form for adding a new recipe.

@@ -2,6 +2,11 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
+var recipeSchema = mongoose.Schema ({
+		title	: String,
+		ingredients: [String],
+});
+
 //define the schema for our user model
 var userSchema = mongoose.Schema ({
 
@@ -27,14 +32,7 @@ var userSchema = mongoose.Schema ({
 		email	: String,
 		name	: String
 	},
-	children	: [recipeSchema]
-});
-
-var recipeSchema = mongoose.Schema ({
-	recipe		: {
-		title	: String,
-		ingredients: [String]
-	}
+	recipes	: [recipeSchema]
 });
 
 userSchema.methods.generateHash = function(password) {

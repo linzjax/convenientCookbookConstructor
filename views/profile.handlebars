@@ -6,35 +6,15 @@
 	</div>
 
 	<div class='row'>
-
-		<div class='col-sm-6'>
-			<div class='well'>
-				<h3><span class='fa fa-user'></span> Local</h3>
-
-				<p>
-					<strong>id</strong>: {{user._id}}<br />
-					<strong>email</strong>: {{user.local.email}}<br />
-					<strong>password</strong>: {{user.local.password}}<br />
-				</p>
+		{{#each recipes}}
+			{{title}}
+			{{ingredients}}
+		{{/each}}
+		
 			</div>
 		</div>
-		<div class='col-sm-6'>
-			<div class='well'>
-				<h3><span class='fa fa-user'></span> Local</h3>
-
-				<p>
-					<strong>id</strong>: {{user._id}}<br />
-					<strong>email</strong>: {{user.local.email}}<br />
-					<strong>password</strong>: {{user.local.password}}<br />
-				</p>
-			</div>
-		</div>
+		
 	</div>
 </div>
-
-<div class='testing'>
-	<p>HEY!</p>
-</div>
-
 
 

@@ -1,3 +1,5 @@
+var User = require('./../models/user');
+
 module.exports = function(app, passport){
 	//======HOME PAGE=======//
 	app.get('/', function(req,res){
@@ -21,7 +23,7 @@ module.exports = function(app, passport){
 	//======SIGNUP=======//
 
 	app.get('/signup', function(req,res){
-		res.render('signup.handlebars', {message: req.flash('signupMessage')})
+		res.render('signup.handlebars', {message: req.flash('signupMessage')});
 	});
 
 	//process the signup form
@@ -34,10 +36,37 @@ module.exports = function(app, passport){
 	//======PROFILE SECTION=======//
 
 	app.get('/profile', isLoggedIn, function(req,res){
+		console.log(req.user.recipes);
 		res.render('profile.handlebars', {
-			user: req.user
+
+			recipes: req.user.recipes,
 		});
 	});
+
+	app.get('/recipeForm', isLoggedIn, function(req,res){
+		//console.log(req.user.recipes);
+		res.render('recipeForm.handlebars', {
+			//user: req.user.recipes
+		});
+	});
+
+	//add a new recipe via a form
+	app.post('/recipeform', function(req,res){
+		var title = req.body.recipeTitle;
+		var ingredients = req.body.recipeIngredients;
+		ingredients = ingredients.split('\n');
+		ingredients = ingredients.filter(function(ingredient){
+			if (ingredient!=='')
+				return ingredient
+		});
+		req.user.recipes.push({ title: title, ingredients: ingredients});
+		console.log(req.user.recipes);
+		req.user.save(function(err){
+			if (err) return handleError(err);
+			console.log('Success!');
+		});
+	});
+
 
 	app.get('/publicprofile', function(req,res){
 		res.render('publicprofile.handlebars', {
