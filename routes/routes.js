@@ -36,17 +36,15 @@ module.exports = function(app, passport){
 	//======PROFILE SECTION=======//
 
 	app.get('/profile', isLoggedIn, function(req,res){
-		console.log(req.user.recipes);
 		res.render('profile.handlebars', {
-
-			recipes: req.user.recipes,
+			recipes: JSON.stringify(req.user.recipes)
 		});
 	});
 
 	app.get('/recipeForm', isLoggedIn, function(req,res){
-		//console.log(req.user.recipes);
+		
 		res.render('recipeForm.handlebars', {
-			//user: req.user.recipes
+			user: req.user.recipes
 		});
 	});
 
@@ -65,6 +63,8 @@ module.exports = function(app, passport){
 			if (err) return handleError(err);
 			console.log('Success!');
 		});
+
+		res.redirect('/profile')
 	});
 
 
